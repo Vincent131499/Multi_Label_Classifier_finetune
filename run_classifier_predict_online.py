@@ -30,7 +30,7 @@ flags = tf.flags
 FLAGS = flags.FLAGS
 
 ## Required parameters
-BERT_BASE_DIR="./output/accu_multi_label_bert_base_epoch1/"
+BERT_BASE_DIR="./output/multi_label_bert_base_epoch1/"
 flags.DEFINE_string("bert_config_file", BERT_BASE_DIR+"bert_config.json",
     "The config json file corresponding to the pre-trained BERT model. "
     "This specifies the model architecture.")

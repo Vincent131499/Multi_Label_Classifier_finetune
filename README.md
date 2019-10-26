@@ -1,5 +1,6 @@
 # Multi_Label_Classifier_finetune
 微调预训练语言模型，解决多标签分类任务
+<br>
 该项目的目录为：
 * 数据集描述
 * 模型训练
@@ -12,7 +13,7 @@
 ![数据描述](https://github.com/Vincent131499/Multi_Label_Classifier_finetune/raw/master/imgs/data_show.jpg)
 <br>
 标签描述：<br>
-![标签描述](https://github.com/Vincent131499/Multi_Label_Classifier_finetune/raw/master/imgs/label_show.jpg)
+![标签描述](https://github.com/Vincent131499/Multi_Label_Classifier_finetune/raw/master/imgs/labels_show.jpg)
 <br>
 上面有2句示例，第一行分别对应(id,text,labels)，其中labels通过类似于one-hot的方式进行了转换，这里就变成了'1,1,1,0,1,0'，比对标签文件中标签的顺序，表示该文本对应的标签为'toxic,severe_toxic,obscene,insult'<br>
 
@@ -33,9 +34,9 @@ bash train.sh
 注意：<br>
 在训练阶段：
 我们必须修改在output layer后的模型架构。多类分类器将softmax层放置在输出层之后。<br>
-对于多标签，softmax更改为Sigmoid层，损耗更改为sigmoid_cross_entropy_with_logits，可以在create_model（）函数中找到它<br>
+对于多标签，softmax更改为Sigmoid层，loss更改为sigmoid_cross_entropy_with_logits，可以在create_model（）函数中找到它。<br>
 在评估阶段：
-评估标准通过使用的tf.metrics.auc修改为每个类别的auc。具体的可以在metric_fn（）中看到<br>
+评估标准通过使用的tf.metrics.auc修改为每个类别的auc。具体的可以在metric_fn（）中看到.<br>
 
 ## 预测
 运行命令：
@@ -44,6 +45,8 @@ python run_classifier_predict_online.py
 ```
 注意：<br>
 在运行前需要在文件中指定模型路径，修改BERT_BASE_DIR参数，该参数的值为你训练好的模型所在路径（还需要将预训练语言模型中的bert_config.json和vocab.txt两个文件复制到你训练好的模型目录下面，因为模型预测时需要加载这两个文件）<br>
+运行效果如下所示：<br>
+![预测效果](https://github.com/Vincent131499/Multi_Label_Classifier_finetune/raw/master/imgs/predict_show.jpg)
 
 ## 导出模型用于Tensorflow Serving
 由于通过Tensorflow Seving部署模型需要用到pb格式的文件，故在这里也提供了模型转换的功能。<br>

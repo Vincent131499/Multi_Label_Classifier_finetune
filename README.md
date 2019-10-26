@@ -1,5 +1,5 @@
 # Multi_Label_Classifier_finetune
-微调预训练语言模型，解决多标签分类任务
+微调预训练语言模型，解决多标签分类任务。可加载BERT、Roberta、Bert-wwm以及albert等开源tf格式的模型<br>
 <br>
 该项目的目录为：
 * 数据集描述

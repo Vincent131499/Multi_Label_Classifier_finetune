@@ -30,6 +30,13 @@ bash train.sh
 训练后模型的评估效果如下所示：
 ![模型评估效果](https://github.com/Vincent131499/Multi_Label_Classifier_finetune/raw/master/imgs/model_perform.jpg)
 
+注意：<br>
+在训练阶段：
+我们必须修改在output layer后的模型架构。多类分类器将softmax层放置在输出层之后。<br>
+对于多标签，softmax更改为Sigmoid层，损耗更改为sigmoid_cross_entropy_with_logits，可以在create_model（）函数中找到它<br>
+在评估阶段：
+评估标准通过使用的tf.metrics.auc修改为每个类别的auc。具体的可以在metric_fn（）中看到<br>
+
 ## 预测
 运行命令：
 ```Bash

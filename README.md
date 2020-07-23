@@ -1,6 +1,10 @@
 # Multi_Label_Classifier_finetune
 微调预训练语言模型，解决多标签分类任务。可加载BERT、Roberta、Bert-wwm以及albert等开源tf格式的模型<br>
 <br>
+
+## 新增改动
+2020-07-23：在使用AlBert时，请将该项目下的modeling.py文件更新为官方ALBert项目中下的modeling.py，而后在运行。
+
 该项目的目录为：
 * 数据集描述
 * 模型训练
